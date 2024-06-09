@@ -32,7 +32,10 @@ Route::get('/commandes','AdminController@commandes');
 //Categorie controlleur
 Route::get('/categories','CategoryController@categories');
 Route::get('/ajoutercategorie','CategoryController@ajoutercategorie');
-Route::get('sauvercategorie','CategoryController@sauvercategorie');
+Route::post('/sauvercategorie','CategoryController@sauvercategorie');
+Route::get('/edit_categorie/{id}','CategoryController@edit_categorie');
+Route::post('/modifiecategorie','CategoryController@modifiecategorie');
+Route::get('/supprimercategorie/{id}','CategoryController@supprimercategorie');
 
 //Produit
 Route::get('/produits','ProductController@produits');
