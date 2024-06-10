@@ -40,7 +40,7 @@ Route::get('/supprimercategorie/{id}','CategoryController@supprimercategorie');
 //Produit
 Route::get('/produits','ProductController@produits');
 Route::get('/ajouterproduit','ProductController@ajouterproduit');
-Route::get('/sauverproduit','ProductController@sauverproduit');
+Route::post('/sauverproduit','ProductController@sauverproduit');
 
 //Slider controlleur
 Route::get('/ajouterslider','SliderController@ajouterslider');
