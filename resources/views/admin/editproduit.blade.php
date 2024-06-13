@@ -1,7 +1,7 @@
 @extends('layouts.appadmin')
 
 @section('title')
-    Ajouter produit
+    Edit produit
 @endsection
 @section('contenu')
     <div class="main-panel">
@@ -11,7 +11,7 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Ajouter produit</h4>
+                            <h4 class="card-title">Edit produit</h4>
                             @if (Session::has('status'))
                                 <div class="alert alert-success">
                                     {{ Session::get('status') }}
@@ -28,7 +28,7 @@
                             @endif
 
                             {!! Form::open([
-                                'action' => 'ProductController@sauverproduit',
+                                'action' => 'ProductController@modifierproduit',
                                 'method' => 'POST',
                                 'class' => 'cmxform',
                                 'id' => 'commentForm',
@@ -37,18 +37,19 @@
                             {{ csrf_field() }}
 
                             <div class="form-group">
+                                {!! Form::hidden('product_id', $produit->id) !!}
                                 {!! Form::label('', 'Nom du produit', ['for' => 'cname']) !!}
-                                {!! Form::text('product_name', '', ['class' => 'form-control', 'id' => 'cname']) !!}
+                                {!! Form::text('product_name', $produit->product_name, ['class' => 'form-control', 'id' => 'cname']) !!}
                             </div>
 
                             <div class="form-group">
                                 {!! Form::label('', 'Prix du produit', ['for' => 'cname']) !!}
-                                {!! Form::number('product_price', '', ['class' => 'form-control', 'id' => 'cname']) !!}
+                                {!! Form::number('product_price', $produit->product_price, ['class' => 'form-control', 'id' => 'cname']) !!}
                             </div>
 
                             <div class="form-group">
                                 {!! Form::label('', 'Categorie du produit', ['for' => 'cname']) !!}
-                                {!! Form::select('product_category', $categories, null, [
+                                {!! Form::select('product_category', $categories, $produit->product_category, [
                                     'class' => 'form-control',
                                     'placeholder' => 'Select category',
                                 ]) !!}
@@ -59,7 +60,7 @@
                                 {!! Form::file('product_image', ['class' => 'form-control', 'id' => 'cname']) !!}
                             </div>
 
-                            {!! Form::submit('Ajouter', ['class' => 'btn btn-primary']) !!}
+                            {!! Form::submit('Modifier', ['class' => 'btn btn-primary']) !!}
 
                             {!! Form::close() !!}
                             {{-- </form> --}}
