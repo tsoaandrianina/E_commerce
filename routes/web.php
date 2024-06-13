@@ -49,5 +49,11 @@ Route::get('/desactiver_produit/{id}','ProductController@desactiverproduit');
 
 //Slider controlleur
 Route::get('/ajouterslider','SliderController@ajouterslider');
-Route::get('/sauverslider','SliderController@sauverslider');
+Route::post('/sauverslider','SliderController@sauverslider');
 Route::get('/sliders','SliderController@sliders');
+Route::get('/edit_slider/{id}','SliderController@editslider');
+Route::post('/modifierslider','SliderController@modifierslider');
+Route::get('/supprimerslider/{id}','SliderController@supprimerslider');
+Route::get('/activer_slider/{id}','SliderController@activerslider');
+Route::get('/desactiver_slider/{id}','SliderController@desactiverslider');
+
