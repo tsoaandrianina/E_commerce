@@ -1,7 +1,7 @@
 @extends('layouts.appadmin')
 
 @section('title')
-    Ajouter slider
+    Edit slider
 @endsection
 @section('contenu')
     <div class="main-panel">
@@ -11,7 +11,7 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Ajouter slider</h4>
+                            <h4 class="card-title">Edit slider</h4>
                             @if (Session::has('status'))
                                 <div class="alert alert-success">
                                     {{ Session::get('status') }}
@@ -27,7 +27,7 @@
                                 </div>
                             @endif
                             {!! Form::open([
-                                'action' => 'SliderController@sauverslider',
+                                'action' => 'SliderController@modifierslider',
                                 'method' => 'POST',
                                 'class' => 'cmxform',
                                 'id' => 'commentForm',
@@ -36,13 +36,14 @@
                             {{ csrf_field() }}
 
                             <div class="form-group">
+                                {!! Form::hidden('slider_id', $slider->id) !!}
                                 {!! Form::label('', 'Description one', ['for' => 'cname']) !!}
-                                {!! Form::text('description1', '', ['class' => 'form-control', 'id' => 'cname']) !!}
+                                {!! Form::text('description1', $slider->description1, ['class' => 'form-control', 'id' => 'cname']) !!}
                             </div>
 
                             <div class="form-group">
                                 {!! Form::label('', 'Description two', ['for' => 'cname']) !!}
-                                {!! Form::text('description2', '', ['class' => 'form-control', 'id' => 'cname']) !!}
+                                {!! Form::text('description2', $slider->description2, ['class' => 'form-control', 'id' => 'cname']) !!}
                             </div>
 
                             <div class="form-group">
@@ -50,7 +51,7 @@
                                 {!! Form::file('slider_image', ['class' => 'form-control', 'id' => 'cname']) !!}
                             </div>
 
-                            {!! Form::submit('Ajouter', ['class' => 'btn btn-primary']) !!}
+                            {!! Form::submit('Modifier', ['class' => 'btn btn-primary']) !!}
 
                             {!! Form::close() !!}
                             {{-- </form> --}}
